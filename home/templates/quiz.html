@@ -11,6 +11,15 @@
     <title>{{quiz.name}}</title>
 </head>
 <style>
+ body {
+  
+    Background-image:url("/static/images/escultura3.jpg");
+    background-repeat :  no-repeat;
+    background-size: cover ;
+
+
+  }
+
 .timer{
     float: right;
 }
@@ -48,19 +57,21 @@
     }
 
     .head2 {
+        
         color: #FFFFFF;
         font-size: 2rem;
         font-weight: bold;
     }
     .head3 {
+        
         color: #0CB7F2;
         font-size: 2rem;
         font-weight: bold;
     }
 </style>
 
-{% load static%}
-
+    {% load static%}
+   
 <body>
     <nav class="navbar navbar-dark bg-dark">
         <div class="container-fluid">
@@ -205,20 +216,20 @@ const sendData = () => {
                     resDiv.classList.add(...cls)
 
                     if (resp=='not answered') {
-                        resDiv.innerHTML += '- not answered'
+                        resDiv.innerHTML += '- Sin Responder'
                         resDiv.classList.add('bg-info')
                     }
                     else {
-                        const answer = resp['answered']
-                        const correct = resp['correct_answer']
+                        const answer = resp['Respondio']
+                        const correct = resp['Respuesta Correcta']
 
                         if (answer == correct) {
                             resDiv.classList.add('bg-success')
-                            resDiv.innerHTML += ` answered: ${answer}`
+                            resDiv.innerHTML += ` Respondio: ${answer}`
                         } else {
                             resDiv.classList.add('bg-danger')
-                            resDiv.innerHTML += ` | correct answer: ${correct}`
-                            resDiv.innerHTML += ` | answered: ${answer}`
+                            resDiv.innerHTML += ` | Respuesta Correcta: ${correct}`
+                            resDiv.innerHTML += ` | Respondio: ${answer}`
                         }
                     }
                 }
