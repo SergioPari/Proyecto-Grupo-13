@@ -4,21 +4,16 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
     <title>{{quiz.name}}</title>
 </head>
+
 <style>
  body {
-  
-    Background-image:url("/static/images/escultura3.jpg");
+    Background-image:url("/static/images/cielo.jpg");
     background-repeat :  no-repeat;
     background-size: cover ;
-
-
-  }
+}
 
 .timer{
     float: right;
@@ -75,7 +70,7 @@
 <body>
     <nav class="navbar navbar-dark bg-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="/">
                 <div>
                     <img src="{% static 'images/bandera.png' %}" alt="" width="90" height="60"
                         class="logo d-inline-block align-text-top">
@@ -204,7 +199,7 @@ const sendData = () => {
         success: function(response){
             const marks = response.marks
             quizForm.classList.add('not-visible')
-            totalScore.innerHTML = `<h4>Puntaje Final : ${response.score} De {{quiz.number_of_questions}} puntos</h4>`
+            totalScore.innerHTML = `<h4>Puntaje Final : ${response.score} de {{quiz.number_of_questions}} puntos</h4>`
 
 
             marks.forEach(res=>{
@@ -220,16 +215,16 @@ const sendData = () => {
                         resDiv.classList.add('bg-info')
                     }
                     else {
-                        const answer = resp['Respondio']
-                        const correct = resp['Respuesta Correcta']
+                        const answer = resp['answered']
+                        const correct = resp['correct_answer']
 
                         if (answer == correct) {
                             resDiv.classList.add('bg-success')
-                            resDiv.innerHTML += ` Respondio: ${answer}`
+                            resDiv.innerHTML += ` ${answer} ¡Muy Bien!`
                         } else {
                             resDiv.classList.add('bg-danger')
                             resDiv.innerHTML += ` | Respuesta Correcta: ${correct}`
-                            resDiv.innerHTML += ` | Respondio: ${answer}`
+                            resDiv.innerHTML += ` | Respondió: ${answer} ¡Vuelva a intentar!`
                         }
                     }
                 }
