@@ -1,21 +1,21 @@
 {% extends 'base.html' %}
+
 {% block title %} Chaco Trivia {% endblock %}
+
 {% block css %}
 <style>
   .attempt {
-    --gradient: linear-gradient(to left top, #c724dd 10%, #aaaaaa 90%) !important;
+    --gradient: linear-gradient(to left top, #008000 10%, #aaaaaa 90%) !important;
   }
 
-  body {
-  
-    Background-image:url("/static/images/escultura.jpg");
-    background-repeat :  no-repeat;
-    background-size: cover ;
+  body {  
+    Background-image:url("/static/images/esquina.jpg");
+    background-repeat: no-repeat;
   }
 
   .card {
     background: #222;
-    border: 1px solid #7a24dd;
+    border: 1px solid #008000;
     color: rgba(250, 250, 250, 0.8);
     margin-bottom: 3rem;
   }
@@ -65,10 +65,10 @@
   }
 </style>
 {% endblock %}
+
 {% load static %}
 
 {% block body %}
-
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -86,7 +86,7 @@
       </div>
       {% else %}
       <div class="modal-body">
-        <h3>Inicie sesión primero para comenzar el cuestionario</h3>
+        <h3>Por favor inicia sesión para comenzar el cuestionario</h3>
       </div>
       {% endif %}
     </div>
@@ -98,19 +98,15 @@
 <div class="container">
   <div class="container mx-auto mt-2">
     <div class="row">
-
       {% for i in quiz %}
       <div class="col-md-4">
         <div class="card" style="width: 21rem;">
           <div class="card-body">
             <h5 class="card-title" style="text-align: center;">{{i.name}}</h5>
             <br>
-            <p class="card-text">{{i.desc}}</p>
+            <p class="card-text" align="center">{{i.desc}}</p>
             <br>
-            <button data-bs-target="#exampleModal" data-bs-toggle="modal" data-time="{{i.time}}"
-              data-questions="{{i.number_of_questions}}" data-name="{{i.name}}" data-id="{{i.id}}" id="btn"
-              style="justify-content: center;" class="attempt btn mr-2 modal-button"><i class="fas fa-link"></i>Comenzar
-              </button>
+            <button data-bs-target="#exampleModal" data-bs-toggle="modal" data-time="{{i.time}}" data-questions="{{i.number_of_questions}}" data-name="{{i.name}}" data-id="{{i.id}}" id="btn" style="justify-content: center;" class="attempt btn mr-2 modal-button"><i class="fas fa-link"></i>Comenzar</button>
           </div>
         </div>
       </div>
@@ -120,6 +116,7 @@
 </div>
 
 {% endblock %}
+
 {% block js %}
 <script>
   const modalBtns = [...document.getElementsByClassName('modal-button')]
@@ -137,10 +134,7 @@
 
     modaltitle.innerHTML = `${name}`
 
-    modalBody.innerHTML = `
-    ${name} consta de ${numberOfQuestions} preguntas y, por lo tanto, es de
-    ${numberOfQuestions} puntos. Obtendrá exactamente ${time} segundos para completar ${numberOfQuestions} preguntas de opción múltiple. Después de completar las preguntas, puede hacer clic en el botón enviar para obtener su puntaje y ver los errores que cometió. ¡¡¡Qué la Fuerza lo acompañe!!!.
-    `
+    modalBody.innerHTML = `${name} consta de ${numberOfQuestions} preguntas y, por lo tanto, es de ${numberOfQuestions} puntos. Tienes exactamente ${time} segundos para completar ${numberOfQuestions} preguntas de opción múltiple. Después de completar las preguntas, puedes hacer clic en el botón enviar para obtener tu puntaje, ver los aciertos y errores que cometiste y compartir el resultado. ¡¡¡Qué la Fuerza te acompañe!!!.`
 
     startQuiz.addEventListener('click', () => {
       window.location.href = url + id

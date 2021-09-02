@@ -1,70 +1,40 @@
 {% extends 'base.html' %}
+
 {% block title %} Registro {% endblock %}
-{% block css %}
-<style>
-      .head1 {
-    color: #FBAD30;
-    font-size: 2rem;
-    font-weight: bold;
-    height: 50px;
-  }
 
-  .head2 {
-    color: #EF4926;
-    font-size: 2rem;
-    font-weight: bold;
-  }
-  </style>
-  {% endblock %}
-
-  {% block body %}
+{% block body %}
   <div class="row py-5 p-4 bg-white rounded shadow-sm">
-
     <div class="col-lg-6">
-        <div class="bg-light rounded-pill px-4 py-3 text-uppercase font-weight-bold"
-            style="color:black;font-weight:bold">Detalles de Registro</div>
+        <div class="bg-light rounded-pill px-4 py-3 text-uppercase font-weight-bold" style="color:black;font-weight:bold">Completá los Campos</div>
         <br>
         <form class="row g-4" method="POST" action="/signup/">{% csrf_token %}
             <div class="col-md-12">
-                <label for="inputname" class="form-label" style="font-weight: bold;"><i>
-                        Nombre</i></label>
-                <input type="text" placeholder="Ingrese su nombre" style="text-align: center;"
-                    class="form-control" id="first_name" name="first_name" required>
+                <label for="inputname" class="form-label" style="font-weight: bold;"><i>Nombre</i></label>
+                <input type="text" placeholder="Ingrese su nombre" style="text-align: center;" class="form-control" id="first_name" name="first_name" required>
             </div>
             <div class="col-md-12">
-                <label for="inputname" class="form-label" style="font-weight: bold;"><i>
-                        Apellido</i></label>
-                <input type="text" placeholder="Ingrese su apellido" style="text-align: center;"
-                    class="form-control" id="last_name" name="last_name" required>
+                <label for="inputname" class="form-label" style="font-weight: bold;"><i>Apellido</i></label>
+                <input type="text" placeholder="Ingrese su apellido" style="text-align: center;" class="form-control" id="last_name" name="last_name" required>
             </div>
             <div class="col-md-12">
-                <label for="inputname" class="form-label" style="font-weight: bold;"><i>
-                        Nombre de usuario</i></label>
-                <input type="text" placeholder="Ingrese un nombre de usuario" style="text-align: center;"
-                    class="form-control" id="username" name="username" required>
+                <label for="inputname" class="form-label" style="font-weight: bold;"><i>Elegí un nombre de usuario</i></label>
+                <input type="text" placeholder="Ingrese un nombre de usuario" style="text-align: center;" class="form-control" id="username" name="username" required>
             </div>
             <div class="col-md-12">
-                <label for="inputname" class="form-label" style="font-weight: bold;"><i>
-                        Correo electrónico</i></label>
-                <input type="email" placeholder="Ingrese su correo electrónico" style="text-align: center;"
-                    class="form-control" id="email" name="email" required>
+                <label for="inputname" class="form-label" style="font-weight: bold;"><i>Correo electrónico</i></label>
+                <input type="email" placeholder="Ingrese su correo electrónico" style="text-align: center;" class="form-control" id="email" name="email" required>
             </div>
             <div class="col-md-12">
-                <label for="inputname" class="form-label" style="font-weight: bold;"><i>
-                        Contraseña</i></label>
-                <input type="password" placeholder="Ingrese una contraseña" style="text-align: center;"
-                    class="form-control" id="password1" name="password1" required>
+                <label for="inputname" class="form-label" style="font-weight: bold;"><i>Contraseña</i></label>
+                <input type="password" placeholder="Ingrese una contraseña" style="text-align: center;" class="form-control" id="password1" name="password1" required>
             </div>
             <div class="col-md-12">
-                <label for="inputname" class="form-label" style="font-weight: bold;"><i>
-                        Confirme su contraseña</i></label>
-                <input type="password" placeholder="Vuelva a ingresar la contraseña" style="text-align: center;"
-                    class="form-control" id="password2" name="password2" required>
+                <label for="inputname" class="form-label" style="font-weight: bold;"><i>Confirmá tu contraseña</i></label>
+                <input type="password" placeholder="Vuelva a ingresar la contraseña" style="text-align: center;" class="form-control" id="password2" name="password2" required>
             </div>
             <button type="submit" class="btn btn-primary">Enviar</button>
-            </form>
-            <br>
-        </div>
+        </form>
+        <br>
+    </div>
   </div>
-
-  {% endblock %}
+{% endblock %}

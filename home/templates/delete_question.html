@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+
 {% block title %} Eliminar Pregunta {% endblock %}
 
 {% block body %}
@@ -8,7 +9,7 @@
     <form action="/delete_question/{{question.id}}/" method="POST">
             
         {% csrf_token %}
-        <a class="btn btn-warning" href="/add_question/">Cancelar</a>
+        <a class="btn btn-success" href="/add_question/">Cancelar</a>
     
         <input class="btn btn-danger" type="submit" value="Eliminar">
     </form>
