@@ -1,12 +1,41 @@
 {% extends 'base.html' %}
 
-{% block title %} Agregar Cuestionario {% endblock %}
+{% block title %} Agregar Cuestionarios {% endblock %}
 
 {% block body %}
 <div class="container mt-4">
-    <form action="/add_quiz/" method="POST"> {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit" class="btn btn-info">Enviar</button>
-</form>
+    <form action="/add_quiz/" method="POST"> {% csrf_token %}{{ form.as_p }}
+        <button type="submit" class="btn btn-info">Enviar</button>
+    </form>
+    <br>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Tema</th>
+                <th>Descripción</th>
+                <th>Nro. de preguntas</th>
+                <th>Tiempo</th>
+                <th>Eliminar</th>
+            </tr>
+        </thead>
+        {% for quiz in quizs %}
+        <tr>
+            <td><a href="/add_question/">{{quiz.name}}</a></td>
+            <td>{{quiz.desc}}</td>
+            <td>{{quiz.number_of_questions}}</td>
+            <td>{{quiz.time}}</td>
+            <td><a href="/delete_quiz/{{quiz.id}}/" class="btn btn-danger">Eliminar</a></td>
+        </tr>
+        {% endfor %}
+    </table>
 </div>
+{% endblock %}
+
+{% block js %}
+<script>
+    {% if alert %}
+    alert("¡El cuestionario se agregó correctamente!");
+    document.location = '/add_quiz/'
+    {% endif %}
+</script>
 {% endblock %}

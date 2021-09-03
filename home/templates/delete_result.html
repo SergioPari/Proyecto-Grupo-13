@@ -4,7 +4,7 @@
 
 {% block body %}
 <div class="container mt-4">
-    <h4>¿Estás seguro de que quieres eliminar esta partida?<br><br>{{marks.user}} tiene un puntaje de: {{marks.score}} en {{marks.quiz}}</h4>
+    <h4>¿Estás seguro de que quieres eliminar este resultado?<br><br>{{marks.user}} tiene un puntaje de: {{marks.score}} en {{marks.quiz}}</h4>
     <br>
     <form action="/delete_result/{{marks.id}}/" method="POST">
             

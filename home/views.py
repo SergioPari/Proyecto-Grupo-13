@@ -117,16 +117,25 @@ def Logout(request):
 
 
 def add_quiz(request):
+    quizs = Quiz.objects.all()
+    quizs = Quiz.objects.filter().order_by('-id')
     if request.method=="POST":
         form = QuizForm(data=request.POST)
         if form.is_valid():
             quiz = form.save(commit=False)
             quiz.save()
-            obj = form.instance
-            return render(request, "add_quiz.html", {'obj':obj})
+            alert = True
+            return render(request, "add_quiz.html", {'alert':alert})
     else:
         form=QuizForm()
-    return render(request, "add_quiz.html", {'form':form})
+    return render(request, "add_quiz.html", {'form':form, 'quizs':quizs})
+
+def delete_quiz(request, myid):
+    quiz = Quiz.objects.get(id=myid)
+    if request.method == "POST":
+        quiz.delete()
+        return redirect('/add_quiz')
+    return render(request, "delete_quiz.html", {'quiz':quiz})
 
 def add_question(request):
     questions = Question.objects.all()
@@ -134,8 +143,10 @@ def add_question(request):
     if request.method=="POST":
         form = QuestionForm(request.POST)
         if form.is_valid():
-            form.save()
-            return render(request, "add_question.html")
+            question = form.save()
+            question.save()
+            alert = True
+            return render(request, "add_question.html", {'alert':alert})
     else:
         form=QuestionForm()
     return render(request, "add_question.html", {'form':form, 'questions':questions})
@@ -146,7 +157,6 @@ def delete_question(request, myid):
         question.delete()
         return redirect('/add_question')
     return render(request, "delete_question.html", {'question':question})
-
 
 def add_options(request, myid):
     question = Question.objects.get(id=myid)

@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
 
 {% load social_share %}
 
@@ -86,7 +86,7 @@
 
     <div class="container">
         <button type="button" class="start btn btn-success btn-lg start-button mt-5">Hacé Clic Aquí Para Comenzar El Cuestionario</button>
-        <h1 class="text-success mt-3"><strong>{{quiz.name}}</strong><span class="badge bg-dark timer" id="hide-time">Segundos Restantes:<span id="time-left">{{quiz.time}}</span> </span></h1>
+        <h1 class="text-success mt-3"><strong>{{quiz.name}}</strong><span class="badge bg-dark timer" id="hide-time">Segundos Restantes : <span id="time-left">{{quiz.time}}</span> </span></h1>
         <hr class="nice" style="display: none;">
         <div>
             <form id="quiz-form" class="mt-3 mb-3">
@@ -94,7 +94,8 @@
                 <div id="quiz-box"></div>
                 <button type="submit" style="display: none;" id="button1" class="btn btn-success mt-3">Enviar</button>            
             </form>
-            <button class="badge bg-dark total" id="total" style="display: none;"></button> 
+            <div class="badge bg-dark" id="total"></div>
+            <button type="button" class="btn btn-link" id="share"></button>
             <div id="result-box"></div>
         </div>
     </div>
@@ -108,6 +109,7 @@
     const quizBox = document.getElementById('quiz-box')
     const resultBox = document.getElementById('result-box')
     const totalScore = document.getElementById('total')
+    const shareScore = document.getElementById('share')
 
     $.ajax({
     type: 'GET',
@@ -193,7 +195,8 @@ const sendData = () => {
         success: function(response){
             const marks = response.marks
             quizForm.classList.add('not-visible')
-            totalScore.innerHTML = `<h4>Puntaje Final : ${response.score} de {{quiz.number_of_questions}} puntos {% post_to_facebook object_or_url "¡Compartir en Facebook!" %} </h4>`
+            totalScore.innerHTML = `<h1>Puntaje Final : ${response.score} de {{quiz.number_of_questions}} puntos</h1>`
+            shareScore.innerHTML = `<h4>{% post_to_whatsapp object_or_url "¡Compartir en Whatsapp!" %}</h4>`
 
 
             marks.forEach(res=>{

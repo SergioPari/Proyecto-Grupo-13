@@ -27,3 +27,12 @@
   </table>
 </div>
 {% endblock %}
+
+{% block js %}
+<script>
+    {% if alert %}
+    alert("¡La pregunta se agregó correctamente!");
+    document.location = '/add_question/'
+    {% endif %}
+</script>
+{% endblock %}

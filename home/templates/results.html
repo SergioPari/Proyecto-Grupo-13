@@ -11,6 +11,7 @@
             <th>Usuario</th>
             <th>Cuestionario</th>
             <th>Puntaje</th>
+            <th>Fecha</th>
             <th>Eliminar</th>
           </tr>
         </thead>
@@ -19,6 +20,7 @@
           <td>{{mark.user}}</td>
           <td>{{mark.quiz}}</td>
           <td>{{mark.score}}</td>
+          <td>{{mark.fecha}}</td>
           <td><a href="/delete_result/{{mark.id}}/" class="btn btn-danger">Eliminar</a></td>
         </tr>
         {% endfor %}
